@@ -1,0 +1,103 @@
+{
+    "version": 2.0, 
+    "note": "", 
+    "other": {
+        "save_base": 13200, 
+        "batchsize": 20, 
+        "jump": 264, 
+        "whole_len": 5280, 
+        "n_epoch": 500, 
+        "bprop_len": 50
+    }, 
+    "code_name": "rnn_jvs_ann.py", 
+    "net": {
+        "optimizer": "", 
+        "name": "LSTM_ANN", 
+        "dim_h": 50, 
+        "dim_v": 24, 
+        "dim_j": 72, 
+        "model": "LSTM_ANN_final", 
+        "n_layers": 2, 
+        "initmodel": "", 
+        "dim_s": 2, 
+        "dim_a": 2
+    }, 
+    "data": {
+        "test": {
+            "shape": {
+                "joints": [
+                    3000, 
+                    72
+                ], 
+                "annos": [
+                    3000, 
+                    2
+                ], 
+                "speaks": [
+                    3000, 
+                    2
+                ]
+            }, 
+            "name": [
+                "proced_20170107/train/20170107_a1_trim_anno_rev.json"
+            ]
+        }, 
+        "train": {
+            "shape": {
+                "joints": [
+                    5280, 
+                    72
+                ], 
+                "annos": [
+                    5280, 
+                    2
+                ], 
+                "speaks": [
+                    5280, 
+                    2
+                ]
+            }, 
+            "name": [
+                "proced_20170107/3seqx2_raw-spk-40-60/20170107_a1_3608-6248_db40-60_rev.json"
+            ]
+        }, 
+        "valid": {
+            "shape": {
+                "joints": [
+                    3000, 
+                    72
+                ], 
+                "annos": [
+                    3000, 
+                    2
+                ], 
+                "speaks": [
+                    3000, 
+                    2
+                ]
+            }, 
+            "name": [
+                "proced_20170107/train/20170107_a1_trim_anno_rev.json"
+            ]
+        }, 
+        "second_train": {
+            "shape": {
+                "joints": [
+                    84, 
+                    72
+                ], 
+                "annos": [
+                    84, 
+                    2
+                ], 
+                "speaks": [
+                    84, 
+                    2
+                ]
+            }, 
+            "name": [
+                "proced_20170107/nod/nod_test1_rev.json"
+            ]
+        }
+    }
+}
