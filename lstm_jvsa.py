@@ -1,25 +1,5 @@
 # coding:utf-8
 
-"""
-2017.1.16
-使用する関節角度を指定する(全部はいらない)
-
-2017.1.13
-特定のseqは個別にBPTT
-
-velを追加
-
-2017.1.11
-joint+speakひとつのvectorにする, 
-annotation
-
-
-
-2017.1.9
-rnn_annotation2_1.pyを改良
-DataのInputにおいてdata_procを使う
--procされたDataしか使わない
-"""
 
 import argparse
 import copy
@@ -64,15 +44,15 @@ parser.add_argument('--batchsize', '-bt', default=20, type=int,
 parser.add_argument('--bprop_len', '-bl', default=50, type=int,
                     help='backprop length')
 
-parser.add_argument('--train_dir', '-trd', default='proced_20170107/3seqx2_raw-spk-40-60',
+parser.add_argument('--train_dir', '-trd', default='proced_data/train',
                     help='filename')
 
-parser.add_argument('--s_train_dir', '-strd', default='proced_20170107/nod',
+parser.add_argument('--s_train_dir', '-strd', default='proced_data/train_second',
                     help='filename')
 
-parser.add_argument('--valid_dir', '-vld', default='proced_20170107/train',
+parser.add_argument('--valid_dir', '-vld', default='proced_data/valid',
                     help='filename')
-parser.add_argument('--test_dir', '-tsd', default='proced_20170107/train',
+parser.add_argument('--test_dir', '-tsd', default='proced_data/valid',
                     help='filename')
 
 parser.add_argument('--datalen', '-dl', default=3000, type=int,
@@ -141,8 +121,6 @@ valid_data = data_proc2.load_proced_data(valid_file, datalen=args.datalen)
 test_data = data_proc2.load_proced_data(test_file, datalen=args.datalen)
 
 print("train_data:",train_data[0].shape,train_data[2].shape,train_data[2].shape) 
-#print("valid_data[0]:",valid_data[0].shape)
-#print("test_data[0]:",test_data[0].shape)
 
 # Data set
 train_joints, train_speaks, train_annos = train_data[0], train_data[1], train_data[2]
@@ -163,11 +141,6 @@ dim_j = train_joints.shape[1]
 dim_v = train_vels.shape[1]
 dim_s = train_speaks.shape[1]
 dim_a = train_annos.shape[1]
-
-#import matplotlib.pyplot as plt
-#plt.plot(train_vels)
-#plt.show()
-#sys.exit()
 
 
 #joint+speak, annotation
